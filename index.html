@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #00f7ff;
-            --secondary: #ff00c8;
-            --accent: #00ff9d;
-            --dark: #0a0a1a;
-            --darker: #050510;
-            --light: #f0f0ff;
-            --gray: #a0a0c0;
+            --primary: #2a6eff;
+            --secondary: #ff6b35;
+            --accent: #00c9a7;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         * {
@@ -24,8 +24,8 @@
         }
         
         body {
-            background-color: var(--darker);
-            color: var(--light);
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -39,12 +39,12 @@
         
         /* Header & Navigation */
         header {
-            background-color: rgba(10, 10, 26, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 247, 255, 0.2);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
         
         nav {
@@ -55,10 +55,29 @@
         }
         
         .logo {
-            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-img {
+            /* REPLACE THIS WITH YOUR SIGNATURE LOGO */
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary);
-            text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+            color: var(--dark);
         }
         
         .nav-links {
@@ -71,10 +90,10 @@
         }
         
         .nav-links a {
-            color: var(--light);
+            color: var(--dark);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: var(--transition);
             position: relative;
         }
         
@@ -90,7 +109,7 @@
             width: 0;
             height: 2px;
             background: var(--primary);
-            transition: width 0.3s;
+            transition: var(--transition);
         }
         
         .nav-links a:hover::after {
@@ -111,80 +130,97 @@
             position: relative;
             padding-top: 80px;
             overflow: hidden;
-        }
-        
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(0, 247, 255, 0.1), transparent 50%),
-                        radial-gradient(circle at 70% 20%, rgba(255, 0, 200, 0.1), transparent 50%);
-            z-index: -1;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
         }
         
         .hero-content {
-            max-width: 700px;
-            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .profile-img {
+            /* REPLACE THIS WITH YOUR ACTUAL PHOTO */
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .profile-img::before {
+            content: 'YOUR PHOTO HERE';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            z-index: 2;
+        }
+        
+        .profile-img::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('') center/cover no-repeat;
+            /* Add your photo URL above */
         }
         
         .hero h1 {
             font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            margin-bottom: 15px;
+            color: var(--dark);
             line-height: 1.2;
         }
         
         .hero h2 {
             font-size: 1.8rem;
-            color: var(--gray);
-            margin-bottom: 30px;
-            font-weight: 400;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 500;
         }
         
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 40px;
             color: var(--gray);
+            max-width: 600px;
         }
         
         .btn {
             display: inline-block;
             padding: 12px 30px;
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
+            background: var(--primary);
+            color: white;
+            border: none;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background: var(--primary);
-            transition: all 0.3s;
-            z-index: -1;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(42, 110, 255, 0.3);
         }
         
         .btn:hover {
-            color: var(--darker);
-        }
-        
-        .btn:hover::before {
-            width: 100%;
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
         }
         
         /* Sections */
@@ -201,22 +237,28 @@
         .section-title h2 {
             font-size: 2.5rem;
             display: inline-block;
-            color: var(--light);
+            color: var(--dark);
             position: relative;
+            padding-bottom: 15px;
         }
         
         .section-title h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 3px;
+            height: 4px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
         }
         
         /* About Section */
+        .about {
+            background-color: white;
+        }
+        
         .about-content {
             display: flex;
             align-items: center;
@@ -238,40 +280,18 @@
             text-align: center;
         }
         
-        .profile-img {
+        .signature {
+            /* REPLACE THIS WITH YOUR SIGNATURE LOGO */
             width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            height: 100px;
+            margin: 30px auto 0;
+            background-color: var(--dark);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .profile-img::before {
-            content: '';
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: conic-gradient(var(--primary), var(--secondary), var(--accent), var(--primary));
-            animation: rotate 10s linear infinite;
-        }
-        
-        .profile-img::after {
-            content: '';
-            position: absolute;
-            width: 280px;
-            height: 280px;
-            background: var(--darker);
-            border-radius: 50%;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            color: white;
+            font-weight: bold;
         }
         
         /* Services Section */
@@ -282,11 +302,12 @@
         }
         
         .service-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: white;
             border-radius: 15px;
             padding: 30px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
         }
@@ -303,7 +324,7 @@
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 247, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
         .service-icon {
@@ -315,7 +336,7 @@
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
-            color: var(--light);
+            color: var(--dark);
         }
         
         .service-card p {
@@ -330,21 +351,22 @@
         }
         
         .industry-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
+            background: white;
+            padding: 25px 20px;
             border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
         .industry-item:hover {
             transform: translateY(-5px);
-            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .industry-item i {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 15px;
         }
@@ -365,7 +387,7 @@
         .tool-icon {
             width: 80px;
             height: 80px;
-            background: rgba(255, 255, 255, 0.05);
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -373,11 +395,13 @@
             margin: 0 auto 15px;
             font-size: 2rem;
             color: var(--primary);
-            transition: transform 0.3s;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
         .tool-item:hover .tool-icon {
-            transform: scale(1.2);
+            transform: scale(1.1);
+            color: var(--secondary);
         }
         
         /* Reviews Section */
@@ -388,10 +412,11 @@
         }
         
         .review-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: white;
             border-radius: 15px;
             padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             position: relative;
         }
         
@@ -407,7 +432,7 @@
         }
         
         .stars {
-            color: var(--accent);
+            color: var(--secondary);
             margin-bottom: 15px;
         }
         
@@ -428,7 +453,7 @@
         
         .reviewer-name {
             font-weight: 600;
-            color: var(--light);
+            color: var(--dark);
         }
         
         .reviewer-role {
@@ -459,7 +484,7 @@
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.05);
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -467,38 +492,18 @@
             margin-right: 15px;
             color: var(--primary);
             font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            color: var(--light);
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
+        .contact-btn {
+            margin-top: 20px;
         }
         
         /* Footer */
         footer {
-            background: rgba(5, 5, 16, 0.9);
+            background: var(--dark);
+            color: white;
             padding: 50px 0 20px;
-            border-top: 1px solid rgba(0, 247, 255, 0.2);
         }
         
         .footer-content {
@@ -516,38 +521,117 @@
         .social-link {
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--light);
+            color: white;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
         
         .social-link:hover {
             background: var(--primary);
-            color: var(--darker);
             transform: translateY(-5px);
         }
         
         .copyright {
             text-align: center;
-            color: var(--gray);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+        
+        .close-modal:hover {
+            color: var(--secondary);
+        }
+        
+        .modal h3 {
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            color: var(--dark);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
         /* Responsive Design */
         @media (max-width: 992px) {
-            .about-content {
+            .hero-content, .about-content, .contact-container {
                 flex-direction: column;
             }
             
-            .contact-container {
-                flex-direction: column;
+            .hero-image, .about-image {
+                order: -1;
+            }
+            
+            .profile-img {
+                width: 300px;
+                height: 300px;
             }
         }
         
@@ -562,12 +646,13 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 80px);
-                background: var(--darker);
+                background: white;
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
                 padding-top: 50px;
-                transition: left 0.3s;
+                transition: var(--transition);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             }
             
             .nav-links.active {
@@ -604,7 +689,10 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">AN</div>
+                <div class="logo">
+                    <div class="logo-img">AN</div>
+                    <div class="logo-text">Arlinda Nerguti</div>
+                </div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -612,7 +700,7 @@
                     <li><a href="#industries">Industries</a></li>
                     <li><a href="#tools">Tools</a></li>
                     <li><a href="#reviews">Reviews</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" id="contact-link">Contact</a></li>
                 </ul>
                 <div class="menu-toggle">
                     <i class="fas fa-bars"></i>
@@ -623,13 +711,17 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content">
-                <h1>Arlinda Nerguti</h1>
-                <h2>Digital Operations Specialist & Virtual Assistant</h2>
-                <p>I help businesses run smoothly by assisting with task management, project coordination, and streamlining workflows to save time and achieve real results.</p>
-                <a href="#contact" class="btn">Let's Work Together</a>
+                <div class="hero-text">
+                    <h1>Arlinda Nerguti</h1>
+                    <h2>Digital Operations Specialist & Virtual Assistant</h2>
+                    <p>I help businesses run smoothly by assisting with task management, project coordination, and streamlining workflows to save time and achieve real results.</p>
+                    <a href="#" class="btn" id="contact-btn">Let's Work Together</a>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-img floating"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -645,9 +737,10 @@
                     <p>I'm a Virtual Assistant and Digital Operations Specialist passionate about helping businesses run smoothly. I assist with task management, project coordination, and streamlining workflows to save time and achieve real results.</p>
                     <p>Reliable, proactive, and detail-oriented, I focus on delivering efficiency and growth for every client I work with.</p>
                     <p>Let's boost your efficiency and achieve results together!</p>
+                    <div class="signature">YOUR SIGNATURE LOGO HERE</div>
                 </div>
                 <div class="about-image">
-                    <div class="profile-img floating"></div>
+                    <!-- Additional content if needed -->
                 </div>
             </div>
         </div>
@@ -746,19 +839,19 @@
             <div class="tools-container">
                 <div class="tool-item">
                     <div class="tool-icon">
-                        <i class="fab fa-canva"></i>
+                        <i class="fab fa-canva" style="color: #00C4CC;"></i>
                     </div>
                     <p>Canva</p>
                 </div>
                 <div class="tool-item">
                     <div class="tool-icon">
-                        <i class="fas fa-file-excel"></i>
+                        <i class="fas fa-file-excel" style="color: #217346;"></i>
                     </div>
                     <p>Excel</p>
                 </div>
                 <div class="tool-item">
                     <div class="tool-icon">
-                        <i class="fab fa-shopify"></i>
+                        <i class="fab fa-shopify" style="color: #96bf48;"></i>
                     </div>
                     <p>Shopify</p>
                 </div>
@@ -770,7 +863,7 @@
                 </div>
                 <div class="tool-item">
                     <div class="tool-icon">
-                        <i class="fab fa-prezi"></i>
+                        <i class="fas fa-presentation" style="color: #3181c8;"></i>
                     </div>
                     <p>Prezi</p>
                 </div>
@@ -838,7 +931,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section class="contact">
         <div class="container">
             <div class="section-title">
                 <h2>Let's Connect</h2>
@@ -854,7 +947,7 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>guitarigutari@gmail.com</p>
+                            <p>guttarlguttarl@gmail.com</p>
                         </div>
                     </div>
                     
@@ -877,24 +970,12 @@
                             <p>Open to new projects</p>
                         </div>
                     </div>
+                    
+                    <a href="#" class="btn contact-btn" id="contact-btn-2">Contact Me</a>
                 </div>
                 
                 <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Subject">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
+                    <!-- Contact form will be in the modal -->
                 </div>
             </div>
         </div>
@@ -904,7 +985,10 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="logo">Arlinda Nerguti</div>
+                <div class="logo">
+                    <div class="logo-img">AN</div>
+                    <div class="logo-text" style="color: white;">Arlinda Nerguti</div>
+                </div>
                 <div class="social-links">
                     <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
@@ -917,6 +1001,29 @@
             </div>
         </div>
     </footer>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contact-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Contact Me</h3>
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Subject">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </div>
 
     <script>
         // Mobile Menu Toggle
@@ -945,11 +1052,34 @@
             });
         });
         
+        // Modal functionality
+        const modal = document.getElementById('contact-modal');
+        const contactLinks = document.querySelectorAll('#contact-link, #contact-btn, #contact-btn-2');
+        const closeModal = document.querySelector('.close-modal');
+        
+        contactLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.style.display = 'flex';
+            });
+        });
+        
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
         // Form Submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Thank you for your message! I will get back to you soon.');
             this.reset();
+            modal.style.display = 'none';
         });
         
         // Add animation on scroll
